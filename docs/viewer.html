@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Scene A · Interactive replay</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="viewer.css">
+  <script type="importmap">{"imports":{"three":"./assets/vendor/three/three.module.js","three/addons/":"./assets/vendor/three/addons/","@sparkjsdev/spark":"./assets/vendor/spark/spark.module.js"}}</script>
+  <script type="module" src="viewer.js"></script>
+</head>
+<body>
+  <header><div><a href="./#replays">← Back to replays</a><h1><b id="scene-name">Scene A</b> <span id="scene-mode">· animated replay</span></h1></div><button id="reset-view" type="button" disabled>Reset view</button></header>
+  <nav class="scene-nav" aria-label="Replay scene"><a data-viewer-scene="a" href="?scene=a">Scene A</a><a data-viewer-scene="b" href="?scene=b">Scene B</a><a data-viewer-scene="c" href="?scene=c">Scene C</a><a data-viewer-scene="d" href="?scene=d">Scene D</a></nav>
+  <main id="viewer-stage" aria-label="Interactive 3D replay" aria-busy="true">
+    <figure id="dashcam-input" hidden aria-label="Dashcam input synchronized with the 3D replay">
+      <figcaption>Dashcam input</figcaption>
+      <video id="dashcam-video" muted playsinline loop preload="auto" aria-label="Synchronized original dashcam frames"></video>
+      <p id="dashcam-unavailable" hidden>No dashcam frame at this time</p>
+    </figure>
+    <div id="viewer-status" role="status">Loading 3D scene…</div>
+    <div id="viewer-fallback" hidden><p>The interactive view could not be loaded. Enable WebGL2 or try another browser, then reload this page.</p><p><a id="fallback-video" href="assets/interactive/dashcam/a.mp4">Watch the original Scene A dashcam input</a></p></div>
+  </main>
+  <div id="playback" class="playback" hidden>
+    <button id="toggle-play" type="button">Pause</button>
+    <input id="timeline" type="range" min="0" max="1" step="1" value="0" aria-label="Replay time">
+    <output id="playback-time" for="timeline"></output>
+    <small id="human-interval"></small>
+  </div>
+</body>
+</html>

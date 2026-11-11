@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Free-viewpoint replay of pedestrian–vehicle encounters using monocular dashcam video and images captured at the site afterward.">
+  <meta name="theme-color" content="#087b82">
+  <meta property="og:title" content="Free-Viewpoint Replay of Pedestrian–Vehicle Encounters">
+  <meta property="og:description" content="Dashcam video + revisited-site images. Inspect estimated human–vehicle geometry from new viewpoints.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://ugamura.github.io/traffic-replay-page/assets/images/social-urban10.jpg">
+  <meta property="og:url" content="https://ugamura.github.io/traffic-replay-page/">
+  <title>Free-Viewpoint Replay of Pedestrian–Vehicle Encounters</title>
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+  <script src="main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="navigation">
+    <a class="wordmark" href="#main" aria-label="Traffic replay home">Traffic replay</a>
+    <nav aria-label="Main navigation"><a href="#replays">Replays</a><a href="#method">Method</a><a href="#evaluation">Results</a><span class="resource-pending" aria-disabled="true">Paper · coming soon</span></nav>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="paper-title">
+      <h1 id="paper-title">Free-Viewpoint Replay of<br class="desktop-break"> Pedestrian–Vehicle Encounters</h1>
+      <p class="subtitle">from Dashcam Video and Revisited-Site Images</p>
+      <p class="authors"><span>Shunsuke Ugamura<sup>1,3</sup></span><span>Hiroyuki Deguchi<sup>1,3</sup></span><span>Kazufumi Torii<sup>2,3</sup></span><span>Hideo Saito<sup>1,3</sup></span></p>
+      <p class="affiliations"><span><sup>1</sup> Keio University</span><span><sup>2</sup> TOYOTA SYSTEMS CORPORATION</span><span><sup>3</sup> Keio AI Research Center</span></p>
+      <div class="actions"><span class="button resource-pending" aria-disabled="true">Paper · coming soon</span><a class="button" href="#replays">Videos</a><span class="button resource-pending" aria-disabled="true">Code · coming soon</span></div>
+      <section class="hero-abstract" aria-labelledby="abstract-title">
+        <h2 id="abstract-title">Abstract</h2>
+        <p>Monocular dashcam video captures an encounter from a single viewpoint. We combine it with images taken at the site afterward and measured scene geometry to create metric, free-viewpoint replays. Supporting-foot contacts initialize human placement; temporal smoothing and full-body 2D reprojection refine body position. Synchronized roadside and overhead views let viewers inspect estimated pedestrian–vehicle positions and separation over time.</p>
+      </section>
+    </section>
+
+    <section class="section wrap" id="overview" aria-labelledby="overview-title">
+      <div class="section-heading"><h2 id="overview-title">Inputs and replay</h2></div>
+      <div class="input-grid">
+        <figure><img src="assets/images/dashcam.jpg" alt="Dashcam frame showing a pedestrian ahead of the recording vehicle" width="960" height="540" loading="lazy"><figcaption><div><strong>Dashcam recording</strong></div></figcaption></figure>
+        <figure>
+          <div class="site-views" role="group" aria-label="Four photographs taken from different viewpoints when revisiting the same site">
+            <a href="assets/images/site-view-1.jpg" aria-label="Open site photograph 1"><img src="assets/images/site-view-1.jpg" alt="View along the side road toward the junction and white building" width="960" height="540" loading="lazy"></a>
+            <a href="assets/images/site-view-2.jpg" aria-label="Open site photograph 2"><img src="assets/images/site-view-2.jpg" alt="View of the junction from beside the parked dark car" width="960" height="540" loading="lazy"></a>
+            <a href="assets/images/site-view-3.jpg" aria-label="Open site photograph 3"><img src="assets/images/site-view-3.jpg" alt="View across the junction toward the opposite houses and parked white car" width="960" height="540" loading="lazy"></a>
+            <a href="assets/images/site-view-4.jpg" aria-label="Open site photograph 4"><img src="assets/images/site-view-4.jpg" alt="View down the road from another position beside the junction" width="960" height="540" loading="lazy"></a>
+          </div>
+          <figcaption><div><strong>Revisited-site images</strong></div></figcaption>
+        </figure>
+        <figure><img src="assets/images/site1-c-urban10.jpg" alt="Reconstructed view with a cyan human mesh and dark vehicle proxy on the road" width="960" height="540" loading="lazy"><figcaption><div><strong>Free-viewpoint replay</strong></div></figcaption></figure>
+      </div>
+    </section>
+
+    <section class="replay-section" id="replays" aria-labelledby="replay-title"><div class="wrap">
+      <div class="section-heading"><h2 id="replay-title">Real-world replays</h2></div>
+      <div data-gallery="real">
+      <div class="scene-selector" role="group" aria-label="Choose a replay scene">
+        <button type="button" data-scene="site1-a" aria-pressed="true">Scene A</button>
+        <button type="button" data-scene="site1-b" aria-pressed="false">Scene B</button>
+        <button type="button" data-scene="site1-c" aria-pressed="false">Scene C</button>
+        <button type="button" data-scene="site1-d" aria-pressed="false">Scene D</button>
+      </div>
+      <div class="replay-viewer">
+        <iframe id="replay-viewer" src="viewer.html?scene=a&amp;embed=1" title="Interactive 3D replay · Scene A" loading="lazy" allow="fullscreen"></iframe>
+      </div>
+      <noscript><p>JavaScript and WebGL2 are required for the interactive replays.</p></noscript>
+      </div>
+      <h3 class="subsection-title">CARLA motion examples</h3>
+      <p class="section-intro">Input videos and top-view pelvis trajectories. These eight examples have the lowest sequence-mean World MPJPE12 among compared methods; results below include all 30 sequences.</p>
+      <div data-gallery="carla">
+        <div class="scene-selector" role="group" aria-label="Choose a CARLA motion">
+          <button type="button" data-scene="carla-stop-m1" aria-pressed="true">Stop / resume · L1</button>
+          <button type="button" data-scene="carla-turn-m2" aria-pressed="false">90° turn · L2</button>
+          <button type="button" data-scene="carla-run-m1" aria-pressed="false">Walk to run · L1</button>
+          <button type="button" data-scene="carla-scurve" aria-pressed="false">S-curve · L1</button>
+          <button type="button" data-scene="carla-gentle-m3" aria-pressed="false">45° turn · L3</button>
+          <button type="button" data-scene="carla-straight-m1" aria-pressed="false">Straight · L1</button>
+          <button type="button" data-scene="carla-turn-m3" aria-pressed="false">90° turn · L3</button>
+          <button type="button" data-scene="carla-stop" aria-pressed="false">Stop / resume · L2</button>
+        </div>
+        <figure class="gallery-player">
+          <video id="carla-video" controls playsinline autoplay muted loop preload="metadata" width="1280" height="540" poster="assets/images/carla-stop-m1-reprojection.jpg" aria-label="CARLA Stop and resume: input and top-view pelvis trajectories">
+            <source src="assets/videos/carla-stop-m1-reprojection.mp4" type="video/mp4">
+            Your browser does not support embedded video.
+          </video>
+
+        </figure>
+        <p class="video-error" role="status" hidden>Video playback is unavailable. Please try another browser.</p>
+
+      </div>
+    </div></section>
+
+    <section class="section wrap" id="method" aria-labelledby="method-title">
+      <div class="section-heading"><h2 id="method-title">Contact-first human placement</h2></div>
+      <p class="section-intro">Foot contacts initialize placement; directional temporal smoothing and full-body 2D reprojection refine position. Body pose, orientation, scale and cameras stay fixed.</p>
+      <figure class="method-figure"><img src="assets/images/method.svg" alt="Pipeline: site images and measurements establish a metric scene; registered dashcam frames and supporting-foot observations initialize human placement; directional temporal and full-body 2D reprojection refinement produces a shared-world replay" width="1120" height="310" loading="lazy"></figure>
+    </section>
+
+    <section class="results-section" id="evaluation" aria-labelledby="results-title"><div class="wrap">
+      <div class="section-heading"><h2 id="results-title">Results</h2></div>
+      <p class="table-note">CARLA · 30 sequences · World MPJPE12 in cm (↓). Same 2,635 shared instants; sequence-equal averages.</p>
+      <div class="system-results"><table class="bar-chart"><caption>CARLA: World MPJPE12 (cm ↓)</caption><thead><tr><th scope="col">Method</th><th scope="col">World-space joint error</th></tr></thead><tbody><tr class="highlight"><th scope="row">Ours</th><td style="--bar-end:11.0646%"><span class="error-bar" style="width:11.0646%" aria-hidden="true"></span><data value="27.6615225677">27.66</data></td></tr><tr><th scope="row">TRAM+HAC</th><td style="--bar-end:19.4051%"><span class="error-bar" style="width:19.4051%" aria-hidden="true"></span><data value="48.5126809450">48.51</data></td></tr><tr><th scope="row">TRAM</th><td style="--bar-end:39.9068%"><span class="error-bar" style="width:39.9068%" aria-hidden="true"></span><data value="99.7669340664">99.77</data></td></tr><tr><th scope="row">GVHMR</th><td style="--bar-end:41.6635%"><span class="error-bar" style="width:41.6635%" aria-hidden="true"></span><data value="104.1587922153">104.16</data></td></tr><tr><th scope="row">WHAM</th><td style="--bar-end:52.1852%"><span class="error-bar" style="width:52.1852%" aria-hidden="true"></span><data value="130.4628824151">130.46</data></td></tr><tr><th scope="row">GLAMR</th><td style="--bar-end:79.7188%"><span class="error-bar" style="width:79.7188%" aria-hidden="true"></span><data value="199.2971172373">199.30</data></td></tr><tr><th scope="row">JOSH</th><td style="--bar-end:93.9475%"><span class="error-bar" style="width:93.9475%" aria-hidden="true"></span><data value="234.8688049111">234.87</data></td></tr><tr class="incomplete"><th scope="row">Human3R</th><td class="missing-result"><strong>N/A</strong> <span class="support-note">2,553 / 2,640 instants; incomplete support</span></td></tr></tbody></table></div>
+      <p class="results-footnote">Our system also uses revisited-site images and measured distances.</p>
+      <details class="placement-details"><summary>Evaluation notes</summary>
+        <p class="results-footnote">Inputs and body estimators differ across systems. TRAM+HAC has lower World error in 7/30 sequences; GVHMR has lower acceleration error. Human3R has incomplete support, so its full-set mean is N/A.</p>
+        <p class="results-footnote">These are development results. Validation at unused sites and outside reference coverage remains open; one matched real sequence shifts by up to 4.59 m outside that coverage.</p>
+      </details>
+    </div></section>
+
+    <section class="section wrap closing" aria-labelledby="scope-title">
+      <div><h2 id="scope-title">Scope</h2><p>Offline replay for visible feet on locally planar roads. Estimated geometry requires calibration and independent validation at new sites.</p></div>
+      <div class="resource-links"><a href="mailto:syunsuke_ugamura@keio.jp"><span>Questions about this work</span><strong>Contact the authors <span aria-hidden="true">↗</span></strong></a></div>
+    </section>
+  </main>
+  <footer class="wrap footer"><p>Free-Viewpoint Replay · Ugamura, Deguchi, Torii & Saito</p><span><a href="credits.html">Credits</a> · <a href="#main">Back to top ↑</a></span></footer>
+</body>
+</html>

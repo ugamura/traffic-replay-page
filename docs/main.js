@@ -25,8 +25,8 @@ for (const gallery of document.querySelectorAll('[data-gallery="carla"]')) {
       player.pause();
       error.hidden = true;
       for (const other of buttons) other.setAttribute("aria-pressed", String(other === button));
-      player.poster = `assets/images/${key}-reprojection.jpg`;
-      player.src = `assets/videos/${key}-reprojection.mp4`;
+      player.poster = `assets/images/${key}-reprojection.jpg?v=dashcam`;
+      player.src = `assets/videos/${key}-reprojection.mp4?v=dashcam`;
       player.setAttribute("aria-label", scene.title);
       player.load();
       syncVideoPlayback(player);

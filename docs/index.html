@@ -37,7 +37,10 @@
 
     <section class="section wrap" id="overview" aria-labelledby="overview-title">
       <div class="section-heading"><h2 id="overview-title">Inputs and replay</h2></div>
-      <div class="input-grid">
+      <div class="input-replay-flow">
+        <div class="io-inputs" role="group" aria-label="Input: dashcam recording and revisited-site images">
+          <p class="io-label">Input</p>
+          <div class="input-grid">
         <figure><img src="assets/images/dashcam.jpg" alt="Dashcam frame showing a pedestrian ahead of the recording vehicle" width="960" height="540" loading="lazy"><figcaption><div><strong>Dashcam recording</strong></div></figcaption></figure>
         <figure>
           <div class="site-views" role="group" aria-label="Four photographs taken from different viewpoints when revisiting the same site">
@@ -48,7 +51,13 @@
           </div>
           <figcaption><div><strong>Revisited-site images</strong></div></figcaption>
         </figure>
-        <figure><img src="assets/images/site1-c-urban10.jpg" alt="Reconstructed view with a cyan human mesh and dark vehicle proxy on the road" width="960" height="540" loading="lazy"><figcaption><div><strong>Free-viewpoint replay</strong></div></figcaption></figure>
+          </div>
+        </div>
+        <span class="io-arrow" aria-hidden="true">→</span>
+        <div class="io-output" role="group" aria-label="Output: free-viewpoint replay">
+          <p class="io-label">Output</p>
+          <figure><img src="assets/images/site1-c-urban10.jpg" alt="Output replay with a cyan human mesh and an orange Urban ’10 vehicle in the reconstructed road scene" width="960" height="540" loading="lazy"><figcaption><div><strong>Free-viewpoint replay</strong></div></figcaption></figure>
+        </div>
       </div>
     </section>
 
@@ -93,8 +102,8 @@
 
     <section class="section wrap" id="method" aria-labelledby="method-title">
       <div class="section-heading"><h2 id="method-title">Contact-first human placement</h2></div>
-      <p class="section-intro">Foot contacts initialize placement; directional temporal smoothing and full-body 2D reprojection refine position. Body pose, orientation, scale and cameras stay fixed.</p>
-      <figure class="method-figure"><img src="assets/images/method.svg" alt="Pipeline: site images and measurements establish a metric scene; registered dashcam frames and supporting-foot observations initialize human placement; directional temporal and full-body 2D reprojection refinement produces a shared-world replay" width="1120" height="310" loading="lazy"></figure>
+      <p class="section-intro">Predicted foot contacts anchor the person to the reconstructed road. Calibrated rays through the supporting-foot pixels intersect the road plane, providing initial root positions. We then refine only root translation using contact observations, directional temporal regularity and confidence-weighted full-body 2D reprojection. Body pose, orientation, scale and cameras stay fixed.</p>
+      <figure class="method-figure"><a href="assets/images/pipeline.pdf" target="_blank" rel="noopener" aria-label="Open the original pipeline figure PDF used in the paper"><img src="assets/images/pipeline.png" alt="Pipeline from the paper: post-event images establish a metric SfM map and 3DGS background; event-time dashcam registration and contact-selected foot rays initialize human placement, followed by temporal and 2D reprojection refinement with body and cameras fixed; the output is a free-viewpoint replay" width="2400" height="954" loading="lazy"></a></figure>
     </section>
 
     <section class="results-section" id="evaluation" aria-labelledby="results-title"><div class="wrap">

@@ -1,7 +1,7 @@
 # Traffic replay
 
 Project page for **Free-Viewpoint Replay of Pedestrian–Vehicle Encounters
-from Dashcam Video and Revisited-Site Images**.
+from Monocular Dashcam Video and Pre-Captured Multi-View Site Images**.
 
 Shunsuke Ugamura, Hiroyuki Deguchi, Kazufumi Torii, and Hideo Saito.
 

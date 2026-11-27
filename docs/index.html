@@ -28,7 +28,20 @@
       <p class="subtitle">from Monocular Dashcam Video and Pre-Captured Multi-View Site Images</p>
       <p class="authors"><span>Shunsuke Ugamura<sup>1,3</sup></span><span>Hiroyuki Deguchi<sup>1,3</sup></span><span>Kazufumi Torii<sup>2,3</sup></span><span>Hideo Saito<sup>1,3</sup></span></p>
       <p class="affiliations"><span><sup>1</sup> Keio University</span><span><sup>2</sup> TOYOTA SYSTEMS CORPORATION</span><span><sup>3</sup> Keio AI Research Center</span></p>
-      <div class="actions"><span class="button resource-pending" aria-disabled="true">Paper · coming soon</span><a class="button" href="#replays">Videos</a><span class="button resource-pending" aria-disabled="true">Code · coming soon</span></div>
+      <div class="actions" role="group" aria-label="Project resources">
+        <button class="button" type="button" disabled>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M5 3h9l5 5v13H5z M14 3v6h5 M8 13h8 M8 17h6"/></svg>
+          Paper <small>Coming soon</small>
+        </button>
+        <a class="button" href="#replays">
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M6 3.5 20 12 6 20.5z" fill="currentColor" stroke="none"/></svg>
+          Videos
+        </a>
+        <button class="button" type="button" disabled>
+          <svg aria-hidden="true" viewBox="0 0 24 24"><path d="m7 7-5 5 5 5 M17 7l5 5-5 5 M14 4l-4 16"/></svg>
+          Code <small>Coming soon</small>
+        </button>
+      </div>
       <section class="hero-abstract" aria-labelledby="abstract-title">
         <h2 id="abstract-title">Abstract</h2>
         <p>Monocular dashcam video captures an encounter from a single viewpoint. We combine it with participant-free images taken from multiple viewpoints before the encounter and measured scene geometry to create metric, free-viewpoint replays. Supporting-foot contacts initialize human placement; temporal smoothing and full-body 2D reprojection refine body position. Synchronized roadside and overhead views let viewers inspect estimated pedestrian–vehicle positions and separation over time.</p>

@@ -25,9 +25,12 @@ sup { font-size: .65em; vertical-align: super; line-height: 0; }
 .subtitle { margin-top: 11px; font-size: clamp(17px, 2vw, 23px); line-height: 1.5; color: #444; }
 .authors { margin-top: 25px; display: flex; flex-wrap: wrap; justify-content: center; gap: 7px 22px; font-size: 15px; }
 .affiliations { margin-top: 9px; display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 18px; color: var(--muted); font-size: 12px; }
-.actions { display: flex; justify-content: center; gap: 12px; margin-top: 25px; }
-.button { border: 1px solid #aaa; border-radius: 3px; padding: 7px 22px; color: #333; font-size: 14px; }
-.button:hover { border-color: #333; text-decoration: none; background: #f6f6f6; }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 25px; }
+.button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 40px; border: 0; border-radius: 999px; padding: 8px 17px; background: #363636; color: white; font-size: 14px; font-weight: 600; line-height: 1.4; }
+.button svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.button:disabled { background: #ededed; color: #454545; opacity: 1; }
+.button small { font-size: 0.78em; font-weight: 500; color: #555; }
+a.button:hover { background: #171717; color: white; text-decoration: none; }
 .hero-abstract { max-width: 840px; margin: 34px auto 38px; text-align: left; }
 .hero-abstract h2 { font-size: 21px; }
 .hero + #overview { padding-top: 0; padding-bottom: 42px; }
